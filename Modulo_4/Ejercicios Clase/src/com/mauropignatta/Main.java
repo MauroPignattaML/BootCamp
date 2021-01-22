@@ -21,7 +21,7 @@ public class Main {
 //        int multiplos = sc.nextInt();
 //        mostrarPrimerosMultiplos(numero, multiplos);
 //        System.out.println();
-
+//
 //        // Punto 3
 //        System.out.println("----- Punto 3 -----");
 //        System.out.print("Ingrese un numero: ");
@@ -36,7 +36,35 @@ public class Main {
 //        System.out.println("----- Punto 4 -----");
 //        System.out.print("Ingrese la cantidad de numeros primos que desea obtener: ");
 //        mostrarPrimos(sc.nextInt());
+//
+//        // Punto 5
+        System.out.println("----- Punto 5 -----");
+        System.out.print("Ingrese la cantidad de numeros naturales que desea obtener: ");
+        int cantidad = sc.nextInt();
+        System.out.print("Ingrese la cantidad de digitos: ");
+        int cantDigitos = sc.nextInt();
+        System.out.print("Ingrese el digito: ");
+        int digito = sc.nextInt();
+        mostrarNumerosNaturares(cantidad, cantDigitos, digito);
 
+    }
+
+    private static void mostrarNumerosNaturares(int cantidad, int cantDigitos, int digito) {
+        int numActual = 0;
+        while(cantidad > 0){
+            if(contieneDigitos(numActual, cantDigitos, digito)){
+                System.out.print(numActual + " ");
+                cantidad--;
+            }
+            numActual++;
+        }
+    }
+
+    private static boolean contieneDigitos(int num, int cantDigitos, int digito) {
+        String strNum = Integer.toString(num);
+        int len = strNum.length();
+        strNum = strNum.replaceAll("" + digito, "");
+        return len - strNum.length() >= cantDigitos;
     }
 
     private static void mostrarPrimos(int cantPrimos) {
