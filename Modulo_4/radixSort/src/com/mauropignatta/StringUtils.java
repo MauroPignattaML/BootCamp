@@ -1,30 +1,34 @@
 package com.mauropignatta;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class StringUtils {
 
-    List<String> toStringList(int[] arr) {
-        return null;
+    public static List<String> toStringList(int[] arr) {
+        List<String> list = new ArrayList<>();
+        for (int n : arr){
+            list.add(Integer.toString(n));
+        }
+        return list;
     }
 
-    int[] toIntArray(List<String> list) {
-        return new int[0];
+    public static List<String> toStringList(Map<Integer, List<String>> map) {
+        List<String> list = new ArrayList<>();
+        for (Map.Entry<Integer, List<String>> entry : map.entrySet()){
+            list.addAll(entry.getValue());
+        }
+        return list;
     }
 
-    public static String fill(String src, char value, int length) {
+    public static String fill(String src, char fillValue, int length) {
+        StringBuilder builder = new StringBuilder();
         for (int i = src.length(); i < length; ++i){
-            src += value;
+            builder.append(fillValue);
         }
-        return reverse(src);
-    }
-
-    public static String reverse(String src) {
-        String reversed = "";
-        for(int i = 0; i < src.length(); ++i) {
-            reversed += src.charAt(src.length() - i - 1);
-        }
-        return reversed;
+        builder.append(src);
+        return builder.toString();
     }
 
 }
